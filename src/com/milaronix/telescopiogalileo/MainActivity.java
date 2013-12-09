@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
+//import android.widget.Toast;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+
 
 public class MainActivity extends Activity {
 		Button btnSearch;
@@ -28,6 +31,20 @@ public class MainActivity extends Activity {
 		ButtonListener listener = new ButtonListener();
 		btnSearch.setOnClickListener(listener);
 		btnOpenActivity.setOnClickListener(listener);
+		
+		Button btnList = new Button(this);
+		btnList.setText(getString(R.string.btn_list));
+		btnList.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		
+		LinearLayout mainContent = (LinearLayout) findViewById(R.id.mainContent);
+		
+		LinearLayout inputControls = (LinearLayout) View.inflate(this, R.layout.input_controls_content, null);
+		
+		
+		mainContent.addView(btnList);
+		mainContent.addView(inputControls);
+		
+		
 	}
 
 	@Override
